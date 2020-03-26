@@ -2,6 +2,7 @@ package com.gianlucaveschi.daggercourse.di;
 
 import android.app.Application;
 
+import com.gianlucaveschi.daggercourse.SessionManager;
 import com.gianlucaveschi.daggercourse.BaseApplication;
 
 import javax.inject.Singleton;
@@ -21,6 +22,9 @@ import dagger.android.support.AndroidSupportInjectionModule;
         })
 
 public interface AppComponent extends AndroidInjector<BaseApplication> {
+
+    //Needs to exist as long as the application is alive.
+    SessionManager sessionManager();
 
     @Component.Builder
     interface Builder {

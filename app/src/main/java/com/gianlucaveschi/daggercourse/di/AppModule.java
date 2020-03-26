@@ -18,7 +18,9 @@ import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-//Contains other dependencies which are not related to activities
+//Modules are the implementation to the Component of those Classes or Interfaces
+// which we don't own's e.g(3rd party Libraries like Retrofit or Glide).
+// They also contains other dependencies "which are not related to activities" (???)
 @Module
 public class AppModule {
 

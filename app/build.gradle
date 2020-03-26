@@ -48,7 +48,7 @@ dependencies {
     annotationProcessor "com.github.bumptech.glide:compiler:$glideVersion"
 
     // ViewModel and LiveData
-    def lifecycle_version = '2.1.0-alpha03'
+    def lifecycle_version = '2.2.0'
     implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
 
     // Retrofit
@@ -63,4 +63,8 @@ dependencies {
     // Rx-Retrofit Call Adapter
     def rxcalladapter_version = '2.5.0'
     implementation "com.squareup.retrofit2:adapter-rxjava2:$rxcalladapter_version"
+
+    // Reactive Streams (convert Observable to LiveData)
+    def reactivestreams_version = "1.1.1"
+    implementation "android.arch.lifecycle:reactivestreams:$reactivestreams_version"
 }
