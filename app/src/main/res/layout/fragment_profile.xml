@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#fff">
+
+    <ImageView
+        android:id="@+id/daggerImage"
+        android:layout_width="wrap_content"
+        android:layout_height="250dp"
+        android:background="@drawable/dagger_google"/>
+    <TextView
+        android:id="@+id/email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="email"
+        android:textColor="#000"
+        android:textSize="17sp"
+        android:textAlignment="center"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/daggerImage"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        android:text="Hello! This is the app I built to learn Dagger 2.2 following Mitch Tabian's course."/>
+
+    <TextView
+        android:id="@+id/username"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/email"
+        android:layout_centerVertical="true"
+        android:layout_marginTop="16dp"
+        android:text="username"
+        android:textColor="#000"
+        android:textSize="17sp"
+        android:textAlignment="center"/>
+
+    <TextView
+        android:id="@+id/website"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="website"
+        android:textColor="#000"
+        android:textSize="17sp"
+        android:layout_below="@id/username"
+        android:layout_centerInParent="true"
+        android:textAlignment="center"/>
+
+</RelativeLayout>
