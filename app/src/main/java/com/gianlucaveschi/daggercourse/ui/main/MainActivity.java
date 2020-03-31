@@ -19,6 +19,7 @@ import androidx.annotation.Nullable;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.navigation.NavController;
+import androidx.navigation.NavOptions;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
 
@@ -48,7 +49,23 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
         navigationView.setNavigationItemSelectedListener(this);
     }
 
+    /*If the User is already inside a fragment and wants to go the same fragment again,
+    * the fragment should not be added to the backstack.
+    * This method makes sure that the user goes to a destination different
+    * from the one he's already inside. */
+    public boolean isValidDestination(int destination){
+        return destination != Navigation.findNavController(this, R.id.nav_host_fragment).getCurrentDestination().getId();
+    }
 
+    //Enables the Hamburger Icon to open the NavDrawer but doesn't allow to close it
+    //Enabl
+    // es the back arrow
+    @Override
+    public boolean onSupportNavigateUp() {
+        return NavigationUI.navigateUp(
+                Navigation.findNavController(this,R.id.nav_host_fragment),
+                drawerLayout);
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -61,9 +78,19 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle item selection
         switch (item.getItemId()) {
-            case R.id.logout:
+            case R.id.logout:{
                 sessionManager.logOut();
                 return true;
+            }
+            case R.id.home:{
+                if(drawerLayout.isDrawerOpen(GravityCompat.START)){
+                    drawerLayout.closeDrawer(GravityCompat.START);
+                    return true; //Consume the click
+                }
+                else{
+                    return false; //Don't consume the click
+                }
+            }
             default:
                 return super.onOptionsItemSelected(item);
         }
@@ -73,16 +100,38 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
             case R.id.nav_profile:{
-                Navigation.findNavController(this, R.id.nav_host_fragment).navigate(R.id.profileScreen);
+
+                // nav options to clear backstack
+                NavOptions navOptions = new NavOptions.Builder()
+                        .setPopUpTo(R.id.main, true)
+                        .build();
+
+                Navigation.findNavController(this, R.id.nav_host_fragment)
+                        .navigate(R.id.profileScreen,
+                                null,
+                                navOptions
+                        );
                 break;
             }
             case R.id.nav_posts:{
-                Navigation.findNavController(this, R.id.nav_host_fragment).navigate(R.id.postsScreen);
+                if(isValidDestination(R.id.postsScreen)){
+                    Navigation.findNavController(this, R.id.nav_host_fragment).navigate(R.id.postsScreen);
+                }
                 break;
             }
         }
         item.setChecked(true);
         drawerLayout.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    @Override
+    public void onBackPressed() {
+        if(drawerLayout.isDrawerOpen(GravityCompat.START)){
+            drawerLayout.closeDrawer(GravityCompat.START);
+        }
+        else{
+            super.onBackPressed();
+        }
     }
 }

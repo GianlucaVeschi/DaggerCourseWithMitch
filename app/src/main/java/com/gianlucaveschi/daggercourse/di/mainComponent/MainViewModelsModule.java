@@ -1,7 +1,6 @@
-package com.gianlucaveschi.daggercourse.di.main;
+package com.gianlucaveschi.daggercourse.di.mainComponent;
 
 import com.gianlucaveschi.daggercourse.di.ViewModelKey;
-import com.gianlucaveschi.daggercourse.ui.main.posts.PostsFragment;
 import com.gianlucaveschi.daggercourse.ui.main.posts.PostsViewModel;
 import com.gianlucaveschi.daggercourse.ui.main.profile.ProfileViewModel;
 

@@ -1,4 +1,4 @@
-package com.gianlucaveschi.daggercourse.di.main;
+package com.gianlucaveschi.daggercourse.di.mainComponent;
 
 import com.gianlucaveschi.daggercourse.ui.main.posts.PostsFragment;
 import com.gianlucaveschi.daggercourse.ui.main.profile.ProfileFragment;

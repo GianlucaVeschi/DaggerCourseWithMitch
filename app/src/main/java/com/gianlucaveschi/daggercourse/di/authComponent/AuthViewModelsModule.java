@@ -1,4 +1,4 @@
-package com.gianlucaveschi.daggercourse.di.auth;
+package com.gianlucaveschi.daggercourse.di.authComponent;
 
 import com.gianlucaveschi.daggercourse.di.ViewModelKey;
 import com.gianlucaveschi.daggercourse.ui.auth.AuthViewModel;
